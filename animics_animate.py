@@ -82,13 +82,6 @@ def build_driver(download_folder, worker_id=None, window_index=0):
     options = Options()
     if config.HEADLESS_ANIMICS:
         options.add_argument("--headless=new")
-        options.add_argument("--window-size=1280,900")
-        # Software WebGL so Animics' Three.js/MediaPipe render WITHOUT a GPU
-        # (needed on a headless EC2 box). Newer Chrome blocks SwiftShader WebGL
-        # in headless mode unless this flag is set.
-        options.add_argument("--use-gl=angle")
-        options.add_argument("--use-angle=swiftshader")
-        options.add_argument("--enable-unsafe-swiftshader")
     else:
         # Offset each worker's window so they don't stack exactly on top.
         cols, w, h = 3, 700, 500
@@ -96,10 +89,6 @@ def build_driver(download_folder, worker_id=None, window_index=0):
         y = (window_index // cols) * (h + 40)
         options.add_argument(f"--window-position={x},{y}")
         options.add_argument(f"--window-size={w},{h}")
-    # Required on a headless Linux server (root/limited namespaces); harmless
-    # on a desktop. /dev/shm is tiny on many EC2 AMIs, so don't rely on it.
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
     options.add_experimental_option(
         "prefs",
         {

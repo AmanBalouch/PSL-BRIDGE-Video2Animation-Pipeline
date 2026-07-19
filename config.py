@@ -40,7 +40,7 @@ TRIM_END_RATIO = 0.5
 
 # Keep False on a machine with a real GPU (Animics uses WebGL + MediaPipe and
 # is far more reliable with a visible browser). See README for EC2/headless.
-HEADLESS_ANIMICS = True
+HEADLESS_ANIMICS = False
 
 # Restart Chrome every CHUNK_SIZE videos to bound WebGL/MediaPipe memory growth.
 CHUNK_SIZE = 8
