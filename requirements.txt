@@ -1,0 +1,3 @@
+# Selenium 4.11+ ships Selenium Manager, which auto-downloads a matching
+# chromedriver for you - no webdriver-manager needed.
+selenium>=4.15

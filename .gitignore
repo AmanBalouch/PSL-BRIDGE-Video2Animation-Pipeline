@@ -1,0 +1,13 @@
+# Generated data (created at runtime, per category) - don't commit these
+*_videos/
+*_animations/
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
